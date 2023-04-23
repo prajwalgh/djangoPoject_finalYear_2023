@@ -1,0 +1,102 @@
+{% extends 'CRUD/base.html'%}
+{%block title%} Home {%endblock title%}
+{%block body%}
+
+<style>
+
+ #preview img {
+        max-width: 100%;
+        max-height: 500px;
+      }
+form table {
+  border-collapse: separate;
+  border-spacing: 10px 5px;
+}
+
+form table tr td:first-child {
+  text-align: right;
+  vertical-align: middle;
+}
+
+form table tr td:last-child {
+  text-align: left;
+  vertical-align: middle;
+}
+
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6" id="imageUp">
+        <h1>Image Uploader</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{{ form.firstname.label_tag }}</td>
+            <td>{{ form.firstname }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.lastname.label_tag }}</td>
+            <td>{{ form.lastname }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.image.label_tag }}</td>
+            <td>{{ form.image }}</td>
+        </tr>
+    </table>
+    <input type="submit" class="btn btn-success" value="Upload">
+</form>
+
+
+
+<!--        <form action="" method="post" enctype="multipart/form-data">-->
+<!--            {% csrf_token %}-->
+<!--            {{form.as_table}}-->
+<!--          <input type="submit" class="btn btn-success" value="Upload">-->
+<!--        </form>-->
+        <h2>Preview:</h2>
+
+    <div class="row">
+
+     {% for x in img %}
+      <div class="col-sm-4">
+
+       <div class="card m-2">
+
+        <img src="{{x.image.url}}" alt="" class="card-img-top" height="200px">
+        <div class="card-footer">
+         <small class="text-muted">{{x.firstname}}</small>
+        </div>
+       </div>
+      </div>
+     {% endfor %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div  style="padding-top: 200px;" class="col-sm-6 ">
+
+      <div class="right-top">
+        <h5><a href="/1" class="btn btn-primary">Analysis</a></h5>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, repudiandae?</p>
+
+      </div>
+      <div class="right-bottom">
+        <h5>thing to do</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, cumque!</p></div>
+  </div>
+</div>
+  </div>
+
+
+{%endblock body%}
